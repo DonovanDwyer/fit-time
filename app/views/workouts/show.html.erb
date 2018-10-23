@@ -1,0 +1,15 @@
+<h1>Workout <%= @workout.name %></h1>
+
+<p>User name: <%= @workout.user.name %></p>
+
+<p>Rating: <%= @workout.rating %></p>
+
+<p>Total Time: <%= @workout.total_time %> minutes</p>
+
+<p>Exercises:</p>
+
+<ol>
+<% @workout.exercises.each do |ex| %>
+<li><%= link_to ex.name, ex %></li>
+<% end %>
+</ol>
