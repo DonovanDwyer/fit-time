@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def create_workout
     # byebug
     @workout = Workout.create(user_id: params[:id], :description => workout_params[:description], :name => workout_params[:name],
-    :total_time => workout_params[:total_time] )
+    :total_time => workout_params[:total_time], :form => workout_params[:form], :function => workout_params[:function] )
     if @workout.valid?
       @workout.add_exercises
       redirect_to workout_path(@workout)
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def workout_params
-    params.require(:workout).permit(:user_id, :description, :name, :rating, :total_time)
+    params.require(:workout).permit(:user_id, :description, :name, :rating, :total_time, :form, :function)
   end
 
   def get_user

@@ -5,16 +5,17 @@ class Workout < ApplicationRecord
   validates :name, presence: true
   validates :total_time, presence: true
 
-  accepts_nested_attributes_for :user
-
   def add_exercises
-    @exercises = Exercise.all
+
+    @exercises_r = Exercise.all.select {|ex| ex.form.downcase == self.form.downcase &&
+       ex.function.downcase == self.function.downcase}
+    # byebug
     while self.remaining_time > 0
       if self.remaining_time == self.total_time
-        @exercises = @exercises.select { |exercise| exercise.time <= self.total_time }
+        @exercises = @exercises_r.select { |exercise| exercise.time <= self.total_time }
           self.exercises << @exercises.sample
       else
-        @exercises = @exercises.select { |exercise| exercise.time <= self.remaining_time }
+        @exercises = @exercises_r.select { |exercise| exercise.time <= self.remaining_time }
         self.exercises << unique_ex(@exercises)
       end
       # byebug

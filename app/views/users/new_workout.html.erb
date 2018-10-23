@@ -4,11 +4,19 @@
   <%= f.label :name, "Workout Name:" %><br>
   <%= f.text_field :name %><br><br>
 
+  <%= f.label :form, "Select the type of workout:" %><br>
+  <%= f.select :form, [['Strength', 'strength'],
+  ['hirep', 'hirep']] %><br><br>
+
   <%= f.label :total_time, "Select the Total Time for Your Workout:"%><br>
   <%= f.select :total_time, [['5 minutes', 5],
   ['10 minutes',10], ['15 minutes', 15],
   ['20 minutes',20], ['25 minutes', 25],
   ['30 minutes',30]] %><br><br>
+
+  <%= f.label :function, "Select your workout's function:" %><br>
+  <%= f.select :function, [['Push', 'push'],
+  ['Pull', 'pull'], ['Legs', 'legs']] %><br><br>
 
   <%= f.label :description, "Add an optional short description:" %><br>
   <%= f.text_area :description %><br>
