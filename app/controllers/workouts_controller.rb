@@ -13,11 +13,12 @@ class WorkoutsController < ApplicationController
 
   def create
     @workout = Workout.create(workout_params)
-    # @exercises = Exercise.all
-    # while @workout.time_remaining >= 0
-    #   @workout.exercises << @exercises.sample
-    # end
-      redirect_to @workout  
+    byebug
+    if @workout.valid?
+      redirect_to workout_path(@workout)
+    else
+      render :new
+    end
   end
 
   def edit

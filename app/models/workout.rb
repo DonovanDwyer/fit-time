@@ -4,26 +4,42 @@ class Workout < ApplicationRecord
   belongs_to :user
   validates :name, presence: true
   validates :total_time, presence: true
-  # validate :ex_time_must_not_exceed_total_time
 
-  # before_validation :time_remaining
+  accepts_nested_attributes_for :user
 
-  # def time_remaining
-  #   if self.exercises != nil  || !self.exercises == nil
-  #     return self.total_time
-  #   else
-  #   ex_time = self.exercises.map do |exercise|
-  #     exercise.time
-  #   end.reduce(:+)
-  #
-  #     return self.total_time - ex_time
-  #   end
-  # end
+  def add_exercises
+    @exercises = Exercise.all
+    while self.remaining_time > 0
+      if self.remaining_time == self.total_time
+        @exercises = @exercises.select { |exercise| exercise.time <= self.total_time }
+          self.exercises << @exercises.sample
+      else
+        @exercises = @exercises.select { |exercise| exercise.time <= self.remaining_time }
+        self.exercises << unique_ex(@exercises)
+      end
+      # byebug
+    end
+  end
 
-  # def ex_time_must_not_exceed_total_time
-  #   if time_remaining < 0
-  #     errors.add(:total_time, "must be equal to or more than exercise time")
-  #   end
-  # end
+  def remaining_time
+    if self.exercises.empty?
+      # byebug
+      return self.total_time
+    else
+      time_for_exercises = self.exercises.map do |exercise|
+        exercise.time
+      end.reduce(:+)
+      self.total_time - time_for_exercises
+    end
+  end
+
+  def unique_ex(array)
+    array.shuffle.each do |exe|
+      if self.exercises.include?(exe) == false
+        return exe
+      end
+    end
+  end
+
 
 end

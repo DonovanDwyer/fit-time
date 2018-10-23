@@ -1,6 +1,6 @@
 <h1>Create Your New Workout:</h1>
 
-<%= form_for :url => create_workout_path do |f| %>
+<%= form_for @workout, :url => create_workout_path do |f| %>
   <%= f.label :name, "Workout Name:" %><br>
   <%= f.text_field :name %><br><br>
 

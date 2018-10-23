@@ -1,1 +1,9 @@
-<h1>Welcome to your profile</h1>
+<h1>Welcome, <%= @user.name %>, to your profile</h1>
+
+<%= link_to "<button>Create a Workout</button>".html_safe, create_new_workout_path %>
+
+<ul>
+<% @user.workouts.each do |workout| %>
+<li><%= workout.name %> <%= link_to "View", workout %></li>
+<% end %>
+</ul>

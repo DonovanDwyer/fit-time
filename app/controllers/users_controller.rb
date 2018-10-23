@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :get_user, only: [:show, :edit, :update, :destroy]
+  before_action :get_user, only: [:show, :edit, :update, :destroy, :create_workout]
   def index
     @users = User.all
   end
@@ -14,6 +14,22 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     redirect_to @user
+  end
+
+  def new_workout
+    @workout = Workout.new
+  end
+
+  def create_workout
+    # byebug
+    @workout = Workout.create(user_id: params[:id], :description => workout_params[:description], :name => workout_params[:name],
+    :total_time => workout_params[:total_time] )
+    if @workout.valid?
+      @workout.add_exercises
+      redirect_to workout_path(@workout)
+    else
+      render 'new_workout'
+    end
   end
 
   def edit
@@ -33,6 +49,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :password)
+  end
+
+  def workout_params
+    params.require(:workout).permit(:user_id, :description, :name, :rating, :total_time)
   end
 
   def get_user

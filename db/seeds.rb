@@ -18,6 +18,11 @@ hiit = Workout.create(user: john, description: "  ", name: "Hi Intensity", ratin
 bench = Exercise.create(name: "Benchpress", form: "Strength", part: nil, function: "Push", instructions: "Just do it, dummy.", time: 10)
 squat = Exercise.create(name: "Squat", form: "Strength", part: nil, function: "Legs", instructions: "Stand up.", time: 10)
 curl = Exercise.create(name: "Bicep Curl", form: "Hi-Rep", part: nil, function: "Pull", instructions: "Touch face with metal. Repeat.", time: 5)
+flies = Exercise.create(name: "Flies", form: "Hi-Rep", part: nil, function: "Push", instructions: "Just do it again.", time: 5)
+incline_bench = Exercise.create(name: "Incline Bench", form: "Hi-Rep", part: nil, function: "Push", instructions: "Booyah.", time: 5)
+
+
+
 
 WorkoutJoin.create(workout: hiit, exercise: bench)
 WorkoutJoin.create(workout: hiit, exercise: squat)
