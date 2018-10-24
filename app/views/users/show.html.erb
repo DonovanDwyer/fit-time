@@ -4,7 +4,12 @@
 
 <ul>
 <% @user.workouts.each do |workout| %>
-<li><%= workout.name %> <%= link_to "View", workout %></li>
+<li>
+<strong><%= workout.name %></strong>
+<ul>
+<li><%= link_to "View", workout %></li>
+<li><%= link_to "Delete", workout, method: :delete, data: { confirm: "Are you sure?" } %></li>
+</ul>
 <% end %>
 </ul>
 

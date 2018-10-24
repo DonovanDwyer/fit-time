@@ -42,5 +42,11 @@ class Workout < ApplicationRecord
     end
   end
 
+  def replace(ex)
+    self.exercises.delete(ex)
+    # @exercise = Exercise.all.select {|exe| exe != ex}
+    # self.exercises << @exercise.sample
+    self.add_exercises
+  end
 
 end

@@ -1,0 +1,20 @@
+<h1>Edit Exercise</h1>
+
+<%= form_for @exercise do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :form %><br>
+  <%= f.text_field :form %><br>
+
+  <%= f.label :function %><br>
+  <%= f.text_field :function %><br>
+
+  <%= f.label :time %><br>
+  <%= f.number_field :time %><br>
+
+  <%= f.label :instructions %><br>
+  <%= f.text_field :instructions %><br><br>
+
+  <%= f.submit %>
+<% end %>

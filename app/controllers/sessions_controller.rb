@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:new, :destroy, :create]
 
   def new
 
@@ -11,14 +12,14 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user
     else
-      flash.now[:error] = "Invalid Username/Password Combination"
-      render :new
+      flash[:error] = "Invalid Username/Password Combination"
+      redirect_to '/login'
     end
   end
 
   def destroy
     session.delete :user_id
-    redirect_to :new
+    redirect_to '/login'
   end
 
 end

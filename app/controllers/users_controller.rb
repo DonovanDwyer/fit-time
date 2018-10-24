@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
   before_action :get_user, only: [:show, :edit, :update, :destroy, :create_workout]
-  def index
-    @users = User.all
-  end
+  skip_before_action :require_login, only: [:new, :create]
+  # def index
+  #   @users = User.all
+  # end
 
   def show
+    if session[:user_id] != @user.id
+      flash[:error] = "Forbidden Action"
+      redirect_to login_path
+    end
   end
 
   def new
@@ -37,18 +42,18 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-    @user.update(user_params)
-    redirect_to @user
-  end
-
-  def destroy
-    @user.destroy
-    redirect_to new_user_path
-  end
+  # def edit
+  # end
+  #
+  # def update
+  #   @user.update(user_params)
+  #   redirect_to @user
+  # end
+  #
+  # def destroy
+  #   @user.destroy
+  #   redirect_to new_user_path
+  # end
 
   private
 

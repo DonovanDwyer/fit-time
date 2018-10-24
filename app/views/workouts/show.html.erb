@@ -1,8 +1,11 @@
-<h1>Workout <%= @workout.name %></h1>
+<h1><%=@workout.user.name%>'s <%= @workout.name.titleize %> Workout</h1>
+A <%= @workout.function.titleize %> Workout Schedule
 
-<p>User name: <%= @workout.user.name %></p>
+<p>Type: <%= @workout.form.titleize %>-Focused</p>
 
-<p>Rating: <%= @workout.rating %></p>
+<% if @workout.rating != nil %>
+  <p>Rating: <%= @workout.rating %></p>
+<% end %>
 
 <p>Total Time: <%= @workout.total_time %> minutes</p>
 
@@ -10,6 +13,10 @@
 
 <ol>
 <% @workout.exercises.each do |ex| %>
-<li><%= link_to ex.name, ex %></li>
+<li><%= link_to ex.name, ex %><br>
+  <%= link_to "Replace and Shuffle", @workout.replace(ex) %>
+</li><br>
 <% end %>
 </ol>
+
+<%= link_to "Go Back", user_path(@workout.user) %>

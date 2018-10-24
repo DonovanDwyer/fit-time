@@ -1,8 +1,8 @@
 class WorkoutsController < ApplicationController
   before_action :get_workout, only: [:show, :edit, :update, :destroy]
-  def index
-    @workouts = Workout.all
-  end
+  # def index
+  #   @workouts = Workout.all
+  # end
 
   def show
   end
@@ -30,8 +30,9 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
+    id = @workout.user.id
     @workout.destroy
-    redirect_to new_workout_path
+    redirect_to user_path(id)
   end
 
   private

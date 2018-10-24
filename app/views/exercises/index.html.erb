@@ -1,0 +1,7 @@
+<h1>Exercise Directory</h1>
+
+<ul>
+<% @exercises.each do |exercise| %>
+  <li><%= link_to exercise.name, exercise %></li>
+<% end %>
+</ul>
