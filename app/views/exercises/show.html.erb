@@ -1,10 +1,10 @@
 <h1><%= @exercise.name %></h1>
 
-<p>Type: <%= @exercise.form %></p>
+<p>Type: <%= @exercise.form.titleize %></p>
 
 <p>Time: <%= @exercise.time %> minutes</p>
 
-<p>Function: <%= @exercise.function %></p>
+<p>Function: <%= @exercise.function.titleize %></p>
 
 <p>Instructions: <%= @exercise.instructions.html_safe %><p>
 Recommended Break: <% if @exercise.form == "strength" %>2 Minutes Between Sets<% else %>1 Minute Between Sets<% end %><br><br>
