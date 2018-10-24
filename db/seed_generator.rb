@@ -58,3 +58,6 @@ ex_arr = [88, 83, 192, 97, 100, 163, 168, 101, 119, 233, 229, 123, 98, 260, 145,
 ex_arr.each do |ex|
   seed_maker(ex)
 end
+
+arr = ["strength", "hirep"]
+Exercise.all.map {|x| x.update(form: arr.sample)}

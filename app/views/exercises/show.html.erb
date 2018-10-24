@@ -7,3 +7,27 @@
 <p>Function: <%= @exercise.function %></p>
 
 <p>Instructions: <%= @exercise.instructions.html_safe %><p>
+Recommended Break: <% if @exercise.form == "strength" %>2 Minutes Between Sets<% else %>1 Minute Between Sets<% end %><br><br>
+
+  Muscles Involved:
+  <ul>
+  <li><%= @exercise.muscle_one %></li>
+  <li><%= @exercise.muscle_two %></li>
+  </ul>
+  <br><br>
+  <% if !@exercise.equipment.nil? %>
+  Equipment Used:
+  <%= @exercise.equipment %>
+  <% end %>
+  <br><br>
+  <% if !@exercise.comment.blank? %>
+  Comment: <%= @exercise.comment.html_safe %>
+  <% end %>
+  <br><br>
+  Body Part: <%= @exercise.body_part %>
+  <br><br>
+<% if !@exercise.images.empty? %>
+   <% @exercise.images.each do |image| %>
+  <img src= <%=image.image_url %> >
+  <% end %>
+<% end %>

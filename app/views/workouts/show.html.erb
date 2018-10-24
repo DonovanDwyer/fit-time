@@ -4,7 +4,7 @@ A <%= @workout.function.titleize %> Workout Schedule
 <p>Type: <%= @workout.form.titleize %>-Focused</p>
 
 <% if @workout.rating != nil %>
-  <p>Rating: <%= @workout.rating %></p>
+  <p>Rating: <%= @workout.rating %> Stars</p>
 <% end %>
 
 <p>Total Time: <%= @workout.total_time %> minutes</p>
@@ -14,9 +14,10 @@ A <%= @workout.function.titleize %> Workout Schedule
 <ol>
 <% @workout.exercises.each do |ex| %>
 <li><%= link_to ex.name, ex %><br>
-  <%= link_to "Replace and Shuffle", @workout.replace(ex) %>
-</li><br>
+<% if ex.form == "strength" %>5 sets x 5 reps<% else %>3 sets x 15 reps<% end %>
+</li>
 <% end %>
 </ol>
 
+<%= link_to "Edit Workout", edit_workout_path %><br>
 <%= link_to "Go Back", user_path(@workout.user) %>

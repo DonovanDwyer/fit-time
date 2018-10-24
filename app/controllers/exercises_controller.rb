@@ -2,6 +2,9 @@ class ExercisesController < ApplicationController
   before_action :get_exercise, only: [:show, :edit, :update, :destroy]
   def index
     @exercises = Exercise.all
+    @push = @exercises.select {|x| x.function == "push"}
+    @pull = @exercises.select {|x| x.function == "pull"}
+    @legs = @exercises.select {|x| x.function == "legs"}
   end
 
   def show
@@ -31,7 +34,8 @@ class ExercisesController < ApplicationController
   private
 
   def exercise_params
-    params.require(:exercise).permit(:name, :type, :part, :type, :function, :instructions, :time)
+    params.require(:exercise).permit(:name, :type, :part, :type, :function, :instructions, :time,
+    :muscle_one, :muscle_two, :equipment, :body_part, :comment)
   end
 
   def get_exercise
