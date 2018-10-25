@@ -1,4 +1,11 @@
+<div class="profile-page">
+  <div class="profile-title" id="workout">
 <h1><%=@workout.user.name%>'s <%= @workout.name.titleize %> Workout</h1>
+</div>
+<div class="login-status">
+  <strong>Logged in as:</strong> <%= link_to @workout.user.name, @workout.user %>  |  <%= link_to "Log Out", logout_path, method: :delete %>
+</div>
+<div class="workout-details">
 A <%= @workout.function.titleize %> Workout Schedule
 
 <p>Type: <%= @workout.form.titleize %>-Focused</p>
@@ -9,15 +16,20 @@ A <%= @workout.function.titleize %> Workout Schedule
 
 <p>Total Time: <%= @workout.total_time %> minutes</p>
 
-<p>Exercises:</p>
+Exercises:
+<div id="links-somewhere">
+<%= link_to "Edit Workout", edit_workout_path %><br>
+</div>
 
+</div>
 <ol>
 <% @workout.exercises.each do |ex| %>
-<li><%= link_to ex.name, ex %><br>
+  <div class="workout-box">
+    <%= link_to ex.name, ex %><br>
 <% if ex.form == "strength" %>5 sets x 5 reps<% else %>3 sets x 15 reps<% end %>
-</li>
+  </div>
 <% end %>
 </ol>
 
-<%= link_to "Edit Workout", edit_workout_path %><br>
-<%= link_to "Go Back", user_path(@workout.user) %>
+
+</div>

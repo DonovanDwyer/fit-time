@@ -1,12 +1,20 @@
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
+<div class="sign-up-page-wrapper">
+  <div class="login-wrapper">
+    <div class="background-img">
+    </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
+  <div class="form-wrapper">
+    <div class="logo">
+      <h1>FitTime</h1>
+    </div>
+    <%= form_for @user do |f| %>
+      <%= f.text_field :name, placeholder: "Enter Your Name", autocomplete: :off %><br><br>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %><br><br>
+      <%= f.password_field :password, placeholder: "Enter Your Password" %><br><br>
 
-  <%= f.submit %>
-<% end %>
+      <%= f.password_field :password_confirmation, placeholder: "Confirm Your Password" %><br><br>
+
+      <%= f.submit "Create Account"%>
+    <% end %>
+  </div>
+</div>

@@ -1,18 +1,24 @@
-<h1>Welcome to FitInYourSchedule</h1>
+<div class="landing_page">
+    <div class="login-wrapper">
+    <div class="logo">
+      <h1>FitTime</h1>
+    </div>
 
-<% if flash[:error] %>
-  <h2><%= flash[:error] %></h2>
-<% end %>
+    <% if flash[:error] %>
+      <h2><%= flash[:error] %></h2>
+    <% end %>
 
-<%= form_for(:session, url: login_path) do |f| %>
+    <div class="form-wrapper">
+    <%= form_for(:session, url: login_path) do |f| %>
 
-  <%= f.label :name, "Name:" %><br>
-  <%= f.text_field :name %><br><br>
+      <%= f.text_field :name, placeholder: "Enter Your Name", autocomplete: :off %><br><br>
 
-  <%= f.label :password, "Password:" %><br>
-  <%= f.password_field :password %><br><br>
-
-  <%= f.submit "Log In" %><br>
-
-<% end %><br>
-Or <%= link_to "Sign Up", "/signup" %> for a New Account
+      <%= f.password_field :password, placeholder: "Enter Your Password" %><br><br>
+    </div>
+    <div class="button-wrapper">
+      <%= f.submit "Get Fit!" %><br>
+    <% end %><br>
+    </div>
+    <%= link_to "Sign Up", "/signup" %>
+  </div>
+</div>

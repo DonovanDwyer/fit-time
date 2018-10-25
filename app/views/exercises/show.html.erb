@@ -1,33 +1,39 @@
+<div class="profile-page">
+  <div class="exercise-page">
+<div class="profile-title">
 <h1><%= @exercise.name %></h1>
-
-<p>Type: <%= @exercise.form.titleize %></p>
-
-<p>Time: <%= @exercise.time %> minutes</p>
-
-<p>Function: <%= @exercise.function.titleize %></p>
-
-<p>Instructions: <%= @exercise.instructions.html_safe %><p>
-Recommended Break: <% if @exercise.form == "strength" %>2 Minutes Between Sets<% else %>1 Minute Between Sets<% end %><br><br>
-
-  Muscles Involved:
-  <ul>
-  <li><%= @exercise.muscle_one %></li>
-  <li><%= @exercise.muscle_two %></li>
-  </ul>
-  <br><br>
-  <% if !@exercise.equipment.nil? %>
-  Equipment Used:
-  <%= @exercise.equipment %>
-  <% end %>
-  <br><br>
-  <% if !@exercise.comment.blank? %>
-  Comment: <%= @exercise.comment.html_safe %>
-  <% end %>
-  <br><br>
-  Body Part: <%= @exercise.body_part %>
-  <br><br>
+</div>
+<div class="login-status" id="this">
+  <strong>Logged in as:</strong> <%= link_to User.find(session[:user_id]).name, User.find(session[:user_id]) %>  |  <%= link_to "Log Out", logout_path, method: :delete %>
+</div><br>
+<p><strong>Type:</strong> <%= @exercise.form.titleize  %> &nbsp;&nbsp;&nbsp;&nbsp; <strong>Time:</strong> <%= @exercise.time %> Minutes &nbsp;&nbsp;&nbsp;&nbsp; <strong>Function:</strong> <%= @exercise.function.titleize %></p>
+<div class="img-box">
 <% if !@exercise.images.empty? %>
    <% @exercise.images.each do |image| %>
-  <img src= <%=image.image_url %> >
+    <img src= <%=image.image_url %> >
   <% end %>
 <% end %>
+</div>
+
+    <div class="exercise-box">
+        <h4>Body Part:</h4> <p><%= @exercise.body_part.upcase %></p>
+        <h4>Muscles Involved:</h4>
+        <ul>
+          <li><%= @exercise.muscle_one.upcase %></li>
+          <li><%= @exercise.muscle_two.upcase %></li>
+        </ul>
+        <% if !@exercise.equipment.nil? %>
+          <h4>Equipment Used:</h4>
+          <p><%= @exercise.equipment.upcase %></p>
+        <% end %>
+        <% if !@exercise.comment.blank? %>
+          <h4>Comment:</h4> <p><%= @exercise.comment.upcase.html_safe %><p>
+        <% end %>
+        <h4>Instructions:</h4> <p><%= @exercise.instructions.upcase.html_safe %><p>
+        <p>RECOMMENDED BREAK: <% if @exercise.form == "strength" %>2 MINUTES BETWEEN SETS<% else %>1 MINUTE BETWEEN SETS<% end %><p>
+      </div>
+  <br><br>
+
+
+</div>
+</div>
