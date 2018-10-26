@@ -1,6 +1,13 @@
+<div class="profile-page">
+  <div class="profile-title" id="edit">
 <h1>Edit Workout:</h1>
+</div>
+<div class="login-status" id="this">
+  <strong>Logged in as:</strong> <%= link_to User.find(session[:user_id]).name, User.find(session[:user_id]) %>  |  <%= link_to "Log Out", logout_path, method: :delete %>
+</div>
 
 <%= form_for @workout do |f| %>
+<div class="form-create">
   <%= f.label :name, "Workout Name:" %><br>
   <%= f.text_field :name %><br><br>
 
@@ -27,3 +34,9 @@
 
   <%= f.submit %>
 <% end %>
+
+</div>
+<footer>
+  FitTime &copy 2019
+</footer>
+</div>

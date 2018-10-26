@@ -59,6 +59,14 @@ input[type="password"] {
   padding: 5px;
 }
 
+input[type="submit"] {
+  background-color: #0213d6;
+  color: white;
+  border-radius: 7px;
+  border-style: none;
+  padding: 8px;
+}
+
 textarea {
   border-radius: 7px;
   border-style: none;
@@ -238,17 +246,19 @@ img {
   position: absolute;
   top: 0;
   left: 0;
+  padding-bottom: 2%;
 }
 
 
 .login-status {
   float: right;
-  margin-right: 10px;
+  margin-right: 7%;
   font-family: "Exo";
+
 }
 
 .login-status#this {
-  margin-right: 15px;
+  margin-right: 7%;
 }
 
 .login-status a:visited, .login-status a:hover, .login-status a:active {
@@ -298,11 +308,11 @@ img {
   float: clear;
 }
 
-#links-somewhere a:active, #links-somewhere a:hover, #links-somewhere a:visited {
+#links-somewhere a:link, #links-somewhere a:active, #links-somewhere a:hover, #links-somewhere a:visited {
   text-decoration: none;
   color: black;
   margin-left: 1%;
-  font-size: 0.1em;
+
 }
 
 .exercise-page {
@@ -317,12 +327,44 @@ img {
   left: 0;
   max-height: 100%;
   overflow: auto;
-
+  margin-left: 2%;
 }
 
 .exercise-box {
   /* width: 50%;
   height: 500px; */
+}
+
+#edit {
+  margin-left: 1%;
+}
+
+footer {
+  background-color: #0213d6;
+  width: 100%;
+  height: 3%;
+  position: absolute;
+  bottom: 0;
+  color: white;
+  font-family: 'Simplicity';
+  padding: 1%;
+}
+
+.exercise-entire-box {
+  position: relative;
+  padding-bottom: : 25%;
+  width: 100%;
+  height: 70%;
+  overflow: auto;
+}
+
+.workout-show-page-box {
+  position: relative;
+  padding-bottom: : 25%;
+  width: 100%;
+  height: 49%;
+  overflow: auto;
+
 }
 
 /* blue1 231, 235, 240

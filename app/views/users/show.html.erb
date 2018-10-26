@@ -9,7 +9,7 @@
 <div class="button-profile-page">
 <%= link_to "<button>Create a Workout</button>".html_safe, create_new_workout_path %>
 </div>
-
+<div class="exercise-entire-box">
 <% @user.workouts.each do |workout| %>
 <div class="workout-box">
 <strong><%= workout.name %></strong>: <%= workout.total_time %> minute workout:
@@ -18,4 +18,8 @@ data: { confirm: "Are you sure?" } %>
 </div>
 <% end %>
 </ul>
+</div>
+<footer>
+  FitTime &copy 2019
+</footer>
 </div>
