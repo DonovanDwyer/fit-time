@@ -263,7 +263,6 @@ img {
 
 .login-status a:visited, .login-status a:hover, .login-status a:active {
   color: white;
-  text-decoration: none;
 }
 
 .workout-box {
@@ -282,6 +281,7 @@ img {
   position: relative;
   left: 25px;
   margin-bottom: 1%;
+  marg
 }
 
 .profile-title {

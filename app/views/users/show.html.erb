@@ -2,13 +2,16 @@
   <div class="profile-title">
     <h2>Profile Page</h2>
   </div>
+  <div class="button-profile-page">
+  <%= link_to "<button>Create a Workout</button>".html_safe, create_new_workout_path %>
+  </div>
+
 <div class="login-status">
-  <strong>Logged in as:</strong> <%= @user.name %> <%= link_to "Log Out", logout_path, method: :delete %>
+  <strong>Logged in as:</strong> <%= link_to User.find(session[:user_id]).name, User.find(session[:user_id]) %>  |  <%= link_to "Log Out", "/logout", method: :delete %>
 </div>
 
-<div class="button-profile-page">
-<%= link_to "<button>Create a Workout</button>".html_safe, create_new_workout_path %>
-</div>
+
+
 <div class="exercise-entire-box">
 <% @user.workouts.each do |workout| %>
 <div class="workout-box">
